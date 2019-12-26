@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="A blog about genomics, data science, and analysis. "><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>samtools常用命令详解(转载) | Billy's Bioinformatics Blog</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">samtools常用命令详解(转载)</h1><a id="logo" href="/.">Billy's Bioinformatics Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">samtools常用命令详解(转载)</h1><div class="post-meta"><a href="/2019/06/16/samtools%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%5B%E8%BD%AC%E8%BD%BD%5D/#comments" class="comment-count"></a><p><span class="date">Jun 16, 2019</span><span><a href="/categories/%E4%BA%8C%E4%BB%A3%E6%B5%8B%E5%BA%8F/" class="category">二代测序</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><!DOCTYPE html>
+<!-- saved from url=(0045)http://www.cnblogs.com/emanlee/p/4316581.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+<title>samtools常用命令详解 - emanlee - 博客园</title>
+<meta property="og:description" content="samtools的说明文档：http://samtools.sourceforge.net/samtools.shtml samtools是一个用于操作sam和bam文件的工具合集。包含有许多命令。以">
+<link type="text/css" rel="stylesheet" href="./samtools常用命令详解 - emanlee - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./samtools常用命令详解 - emanlee - 博客园_files/bundle-Custom.css">
+<link type="text/css" rel="stylesheet" href="./samtools常用命令详解 - emanlee - 博客园_files/16876.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./samtools常用命令详解 - emanlee - 博客园_files/bundle-Custom-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/emanlee/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/emanlee/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/emanlee/wlwmanifest.xml">
+<script src="./samtools常用命令详解 - emanlee - 博客园_files/f.txt"></script><script src="./samtools常用命令详解 - emanlee - 博客园_files/pubads_impl_rendering_285.js"></script><script async="" src="./samtools常用命令详解 - emanlee - 博客园_files/analytics.js"></script><script src="./samtools常用命令详解 - emanlee - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'emanlee', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./samtools常用命令详解 - emanlee - 博客园_files/blog-common.js" type="text/javascript"></script>
+<link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.cnblogs.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.cnblogs.com"></script><script src="./samtools常用命令详解 - emanlee - 博客园_files/pubads_impl_285.js" async=""></script><link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-31/html/container.html"><meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+    <div id="blogTitle">
+    <a id="lnkBlogLogo" href="https://www.cnblogs.com/emanlee/" target="_blank" rel="noopener"><img id="blogLogo" src="./samtools常用命令详解 - emanlee - 博客园_files/logo.gif" alt="返回主页"></a>            
+
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/emanlee/" target="_blank" rel="noopener">EmanLee, Eman Lee's Space (blog, website) </a></h1>
+<h2>EmanLee, Eman Lee's Space (blog, website) </h2>
+
+
+
+
+<pre><code>&lt;/div&gt;&lt;!--end: blogTitle 博客的标题和副标题 --&gt;
+&lt;div id=&quot;navigator&quot;&gt;</code></pre><ul id="navList">
+<li></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/emanlee/" target="_blank" rel="noopener">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow noopener" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" target="_blank">新随笔</a></li>
+<li></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/emanlee/rss" target="_blank" rel="noopener">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/emanlee/rss" target="_blank" rel="noopener"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow noopener" href="https://i.cnblogs.com/" target="_blank">管理</a></li>
+</ul>
+        <div class="blogStats">
+
+
+
+<pre><code>    &lt;/div&gt;&lt;!--end: blogStats --&gt;
+&lt;/div&gt;&lt;!--end: navigator 博客导航栏 --&gt;</code></pre></div><!--end: header 头部 -->
+
+<div id="main">
+    <div id="mainContent">
+    <div class="forFlow">
+
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+    <div class="post">
+        <h1 class="postTitle">
+            <a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/emanlee/p/4316581.html" target="_blank" rel="noopener">samtools常用命令详解</a>
+        </h1>
+        <div class="clear"></div>
+        <div class="postBody">
+            <div id="cnblogs_post_body" class="blogpost-body"><div class="entry-content">
+<p>samtools的说明文档：<a href="http://samtools.sourceforge.net/samtools.shtml" target="_blank">http://samtools.sourceforge.net/samtools.shtml</a><br>
+samtools是一个用于操作sam和bam文件的工具合集。包含有许多命令。以下是常用命令的介绍</p>
+<h2>1. view</h2>
+<p>view命令的主要功能是：将sam文件转换成bam文件；然后对bam文件进行各种操作，比如数据的排序(不属于本命令的功能)和提取(这些操作
+是对bam文件进行的，因而当输入为sam文件的时候，不能进行该操作)；最后将排序或提取得到的数据输出为bam或sam（默认的）格式。</p>
+<p>bam文件优点：bam文件为二进制文件，占用的磁盘空间比sam文本文件小；利用bam二进制文件的运算速度快。</p>
+<p>view命令中，对sam文件头部的输入(-t或-T）和输出(-h)是单独的一些参数来控制的。</p>
+<pre>Usage: samtools view [options] &lt;in.bam&gt;|&lt;in.sam&gt; [region1 [...]]
+默认情况下不加 region，则是输出所有的 region.
+
+<p>Options: -b       output BAM<br>                  默认下输出是 SAM 格式文件，该参数设置输出 BAM 格式<br>         -h       print header for the SAM output<br>                  默认下输出的 sam 格式文件不带 header，该参数设定输出sam文件时带 header 信息<br>         -H       print header only (no alignments)<br>         -S       input is SAM<br>                  默认下输入是 BAM 文件，若是输入是 SAM 文件，则最好加该参数，否则有时候会报错。<br>         -u       uncompressed BAM output (force -b)<br>                  该参数的使用需要有-b参数，能节约时间，但是需要更多磁盘空间。<br>         -c       Instead of printing the alignments, only count them and print the<br>                  total number. All filter options, such as ‘-f’, ‘-F’ and ‘-q’ ,<br>                  are taken into account.<br>         -1       fast compression (force -b)<br>         -x       output FLAG in HEX (samtools-C specific)<br>         -X       output FLAG in string (samtools-C specific)<br>         -c       print only the count of matching records<br>         -L FILE  output alignments overlapping the input BED FILE [null]<br>         -t FILE  list of reference names and lengths (force -S) [null]<br>                  使用一个list文件来作为header的输入<br>         -T FILE  reference sequence file (force -S) [null]<br>                  使用序列fasta文件作为header的输入<br>         -o FILE  output file name [stdout]<br>         -R FILE  list of read groups to be outputted [null]<br>         -f INT   required flag, 0 for unset [0]<br>         -F INT   filtering flag, 0 for unset [0]<br>                  Skip alignments with bits present in INT [0]<br>                  数字4代表该序列没有比对到参考序列上<br>                  数字8代表该序列的mate序列没有比对到参考序列上<br>         -q INT   minimum mapping quality [0]<br>         -l STR   only output reads in library STR [null]<br>         -r STR   only output reads in read group STR [null]<br>         -s FLOAT fraction of templates to subsample; integer part as seed [-1]<br>         -?       longer help</pre></p>
+<p>例子：</p>
+<pre>将sam文件转换成bam文件
+<span style="color: #ff6600;">$ samtools view -bS abc.sam &gt; abc.bam
+$ samtools view -b -S abc.sam -o abc.bam
+
+<p><span style="color: #000000;">提取比对到参考序列上的比对结果</span><br><span style="color: #ff6600;">$ samtools view -bF 4 abc.bam &gt; abc.F.bam</p>
+<p><span style="color: #000000;">提取paired reads中两条reads都比对到参考序列上的比对结果，只需要把两个4+8的值12作为过滤参数即可</span><br>$ samtools view -bF 12 abc.bam &gt; abc.F12.bam</p>
+<p><span style="color: #000000;">提取没有比对到参考序列上的比对结果</span><br>$ samtools view -bf 4 abc.bam &gt; abc.f.bam</p>
+<p><span style="color: #000000;">提取bam文件中比对到caffold1上的比对结果，并保存到sam文件格式</span><br>$ samtools view abc.bam scaffold1 &gt; scaffold1.sam</p>
+<p><span style="color: #000000;">提取scaffold1上能比对到30k到100k区域的比对结果</span><br><span style="color: #ff6600;">$ samtools view abc.bam scaffold1:30000-100000 $gt; scaffold1_30k-100k.sam</p>
+<p><span style="color: #000000;">根据fasta文件，将 header 加入到 sam 或 bam 文件中</span><br>$ samtools view -T genome.fasta -h scaffold1.sam &gt; scaffold1.h.sam</span></span></span></pre></p>
+<h2>2. sort</h2>
+<p>sort对bam文件进行排序。</p>
+<pre>Usage: samtools sort [-n] [-m &lt;maxMem&gt;] &lt;in.bam&gt; &lt;out.prefix&gt;  
+-m 参数默认下是 500,000,000 即500M（不支持K，M，G等缩写）。对于处理大数据时，如果内存够用，则设置大点的值，以节约时间。
+-n 设定排序方式按short reads的ID排序。默认下是按序列在fasta文件中的顺序（即header）和序列从左往右的位点排序。</pre>
+<p>例子：</p>
+<pre><span style="color: #ff6600;">$ samtools sort abc.bam abc.sort    <span style="color: #000000;">###注意 abc.sort 是输出文件的前缀，实际输出是 abc.sort.bam</span>
+$ samtools view abc.sort.bam | less -S</span></pre>
+<h2>3.merge</h2>
+<p>将2个或2个以上的已经sort了的bam文件融合成一个bam文件。融合后的文件不需要则是已经sort过了的。</p>
+<pre>Usage:   samtools merge [-nr] [-h inh.sam] &lt;out.bam&gt; &lt;in1.bam&gt; &lt;in2.bam&gt;[...]
+
+<p>Options: -n       sort by read names<br>         -r       attach RG tag (inferred from file names)<br>         -u       uncompressed BAM output<br>         -f       overwrite the output BAM if exist<br>         -1       compress level 1<br>         -R STR   merge file in the specified region STR [all]<br>         -h FILE  copy the header in FILE to &lt;out.bam&gt; [in1.bam]</p>
+<p>Note: Samtools’ merge does not reconstruct the @RG dictionary in the header. Users<br>      must provide the correct header with -h, or uses Picard which properly maintains<br>      the header dictionary in merging.</pre></p>
+<h2>4.index</h2>
+<p>必须对bam文件进行默认情况下的排序后，才能进行index。否则会报错。</p>
+<p>建立索引后将产生后缀为.bai的文件，用于快速的随机处理。很多情况下需要有bai文件的存在，特别是显示序列比对情况下。比如samtool的tview命令就需要；gbrowse2显示reads的比对图形的时候也需要。</p>
+<pre>Usage: samtools index &lt;in.bam&gt; [out.index]</pre>
+<p>例子：</p>
+<pre>以下两种命令结果一样
+<span style="color: #ff6600;">$ samtools index abc.sort.bam
+$ samtools index abc.sort.bam abc.sort.bam.bai</span></pre>
+<h2>5. faidx</h2>
+<p>对fasta文件建立索引,生成的索引文件以.fai后缀结尾。该命令也能依据索引文件快速提取fasta文件中的某一条（子）序列</p>
+<pre>Usage: samtools faidx &lt;in.bam&gt; [ [...]]
+
+<p>对基因组文件建立索引<br>$ samtools faidx genome.fasta<br>生成了索引文件genome.fasta.fai,是一个文本文件，分成了5列。第一列是子序列的名称；<br>第二列是子序列的长度；个人认为“第三列是序列所在的位置”，因为该数字从上往下逐渐变大，<br>最后的数字是genome.fasta文件的大小；第4和5列不知是啥意思。于是通过此文件，可以定<br>位子序列在fasta文件在磁盘上的存放位置，直接快速调出子序列。</p>
+<p>由于有索引文件，可以使用以下命令很快从基因组中提取到fasta格式的子序列<br>$ samtools faidx genome.fasta scffold_10 &gt; scaffold_10.fasta</pre></p>
+<h2>6. tview</h2>
+<p>tview能直观的显示出reads比对基因组的情况，和基因组浏览器有点类似。</p>
+<pre>Usage: samtools tview &lt;aln.bam&gt; [ref.fasta]
+
+<p>当给出参考基因组的时候，会在第一排显示参考基因组的序列，否则，第一排全用N表示。<br>按下 g ，则提示输入要到达基因组的某一个位点。例子“scaffold_10:1000”表示到达第<br>10号scaffold的第1000个碱基位点处。<br>使用H(左）J（上）K（下）L（右）移动显示界面。大写字母移动快，小写字母移动慢。<br>使用空格建向左快速移动（和 L 类似），使用Backspace键向左快速移动（和 H 类似）。<br>Ctrl+H 向左移动1kb碱基距离； Ctrl+L 向右移动1kb碱基距离<br>可以用颜色标注比对质量，碱基质量，核苷酸等。30～40的碱基质量或比对质量使用白色表示；<br>20～30黄色；10～20绿色；0～10蓝色。<br>使用点号’.’切换显示碱基和点号；使用r切换显示read name等<br>还有很多其它的使用说明，具体按 ？ 键来查看。</pre></p>
+<h2>7. flagstat</h2>
+<p>给出BAM文件的比对结果</p>
+<pre>Usage: samtools flagstat &lt;in.bam&gt;
+
+<p>$ samtools flagstat example.bam<br>11945742 + 0 in total (QC-passed reads + QC-failed reads)<br>#总共的reads数<br>0 + 0 duplicates<br>7536364 + 0 mapped (63.09%:-nan%)<br>#总体上reads的匹配率<br>11945742 + 0 paired in sequencing<br>#有多少reads是属于paired reads<br>5972871 + 0 read1<br>#reads1中的reads数<br>5972871 + 0 read2<br>#reads2中的reads数<br>6412042 + 0 properly paired (53.68%:-nan%)<br>#完美匹配的reads数：比对到同一条参考序列，并且两条reads之间的距离符合设置的阈值<br>6899708 + 0 with itself and mate mapped<br>#paired reads中两条都比对到参考序列上的reads数<br>636656 + 0 singletons (5.33%:-nan%)<br>#单独一条匹配到参考序列上的reads数，和上一个相加，则是总的匹配上的reads数。<br>469868 + 0 with mate mapped to a different chr<br>#paired reads中两条分别比对到两条不同的参考序列的reads数<br>243047 + 0 with mate mapped to a different chr (mapQ&gt;=5)</pre></p>
+<p>#同上一个，只是其中比对质量&gt;=5的reads的数量</p>
+<h2>7. depth</h2>
+<p>得到每个碱基位点的测序深度,并输出到标准输出。</p>
+<pre>Usage: bam2depth [-r reg] [-q baseQthres] [-Q mapQthres] [-b in.bed] &lt;in1.bam&gt; [...]<br>-r 后面跟染色体号（region）<br><br><strong>注意</strong>：做depth之前必须做samtools index；<br><br>示例：<br>samtools depth in.bam  &gt;  out.depth.txt<br>注意： in.bam 必须经过了排序。</pre>
+<h2>8. 其它有用的命令</h2>
+<p>reheader 替换bam文件的头</p>
+<pre>$ samtools reheader &lt;in.header.sam&gt; &lt;in.bam&gt;</pre>
+<p>cat 连接多个bam文件，适用于非sorted的bam文件</p>
+<pre>$ samtools cat [-h header.sam] [-o out.bam] &lt;in1.bam&gt; &lt;in2.bam&gt; [ ... ]</pre>
+<p>idxstats 统计一个表格，4列，分别为”序列名，序列长度，比对上的reads数，unmapped reads number”。第4列应该是paired reads中有一端能匹配到该scaffold上，而另外一端不匹配到任何scaffolds上的reads数。</p>
+<pre>$ samtools idxstats &lt;aln.bam&gt;</pre>
+<h2>9. 将bam文件转换为fastq文件</h2>
+<p>有时候，我们需要提取出比对到一段参考序列的reads，进行小范围的分析，以利于debug等。这时需要将bam或sam文件转换为fastq格式。<br>
+该网站提供了一个bam转换为fastq的程序：<a href="http://www.hudsonalpha.org/gsl/information/software/bam2fastq" target="_blank" rel="noopener">http://www.hudsonalpha.org/gsl/information/software/bam2fastq</a></p>
+<pre>$ wget http://www.hudsonalpha.org/gsl/static/software/bam2fastq-1.1.0.tgz
+$ tar zxf bam2fastq-1.1.0.tgz
+$ cd bam2fastq-1.1.0
+$ make
+$ ./bam2fastq &lt;in.bam&gt;</pre>
+<h2>10. mpileup</h2>
+<p>samtools还有个非常重要的命令mpileup，以前为pileup。该命令用于生成bcf文件，再使用bcftools进行SNP和Indel的分析。bcftools是samtool中附带的软件，在samtools的安装文件夹中可以找到。</p>
+<p>最常用的参数有2： -f 来输入有索引文件的fasta参考序列； -g 输出到bcf格式。用法和最简单的例子如下</p>
+<pre>Usage: samtools mpileup [-EBug] [-C <em>capQcoef</em>] [-r <em>reg</em>] [-f <em>in.fa</em>] [-l <em>list</em>] [-M <em>capMapQ</em>] [-Q <em>minBaseQ</em>] [-q <em>minMapQ</em>] <em>in.bam</em> [<em>in2.bam</em> [<em>...</em>]]
+
+<p>$ samtools mpileup -f genome.fasta abc.bam &gt; abc.txt<br><span style="color: #ff6600;">$ samtools mpileup -gSDf genome.fasta abc.bam &gt; abc.bcf<br>$ samtools mpileup -guSDf genome.fasta abc.bam | <br>           bcftools view -cvNg - &gt; abc.vcf</span></pre></p>
+<p>mpileup不使用-u或-g参数时，则不生成二进制的bcf文件，而生成一个文本文件(输出到标准输出)。该文本文件统计了参考序列中每个碱基位点的比对情况；该文件每一行代表了参考序列中某一个碱基位点的比对结果。比如：</p>
+<pre>scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2841&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,,,...,....&nbsp;&nbsp;&nbsp;&nbsp; BHIGDGIJ?FF
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2842&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,$,,...,....^I. CFGEGEGGCFF+
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2843&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,,...,.....&nbsp;&nbsp;&nbsp;&nbsp; FDDDDCD?DD+
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2844&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,,...,.....&nbsp;&nbsp;&nbsp;&nbsp; FA?AAAA&lt;AA+
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2845&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,,...,.....&nbsp;&nbsp;&nbsp;&nbsp; F656666166*
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2846&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,,...,.....&nbsp;&nbsp;&nbsp;&nbsp; (1.1111)11*
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2847&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,,+9acggtgaag.+9ACGGTGAAT.+9ACGGTGAAG.+9ACGGTGAAG,+9acggtgaag.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG.+9ACGGTGAAG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %.+....-..)
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2848&nbsp;&nbsp;&nbsp; N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; agGGGgGGGGG&nbsp;&nbsp;&nbsp;&nbsp; !!$!!!!!!!!
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2849&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c$,...,.....&nbsp;&nbsp;&nbsp; !0000000000
+scaffold_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2850&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,...,.....&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 353333333</pre>
+<p>mpileup生成的结果包含6行：参考序列名；位置；参考碱基；比对上的reads数；比对情况；比对上的碱基的质量。其中第5列比较复杂,解释如下：</p>
+<p>1 ‘.’代表与参考序列正链匹配。<br>
+2 ‘,’代表与参考序列负链匹配。<br>
+3 ‘ATCGN’代表在正链上的不匹配。<br>
+4 ‘atcgn’代表在负链上的不匹配。<br>
+5 ‘*’代表模糊碱基<br>
+6 ‘^’代表匹配的碱基是一个read的开始；’^'后面紧跟的ascii码减去33代表比对质量；这两个符号修饰的是后面的碱基，其后紧跟的碱基(.,ATCGatcgNn)代表该read的第一个碱基。<br>
+7 ‘$’代表一个read的结束，该符号修饰的是其前面的碱基。<br>
+8 正则式’\+[0-9]+[ACGTNacgtn]+’代表在该位点后插入的碱基；比如上例中在scaffold_1的2847后插入了9个长度的碱基acggtgaag。表明此处极可能是indel。<br>
+9 正则式’-[0-9]+[ACGTNacgtn]+’代表在该位点后缺失的碱基；</p>
+<p>pileup具体的参数如下：</p>
+<pre>输入参数
+-6       Assume the quality is in the Illumina 1.3+ encoding. -A Do not skip anomalous read pairs in variant calling. 
+-B       Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments. 
+-b FILE  List of input BAM files, one file per line [null]
+-C INT   Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0] 
+-d INT   At a position, read maximally INT reads per input BAM. [250] 
+-E       Extended BAQ computation. This option helps sensitivity especially for MNPs, but may hurt specificity a little bit. 
+<span style="color: #ff00ff;">-f FILE  The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by razip. [null] 
+-l FILE  BED or position list file containing a list of regions or sites where pileup or BCF should be generated [null] 
+-M INT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cap mapping quality at INT [60]
+-q INT     Minimum mapping quality for an alignment to be used [0] 
+-Q INT     Minimum base quality for a base to be considered [13]
+-r STR     Only generate pileup in region STR [all sites] 
+
+<p>输出参数<br>-D     Output per-sample read depth (require -g/-u)<br><span style="color: #ff00ff;">-g     Compute genotype likelihoods and output them in the binary call format (BCF).<br>-S     Output per-sample Phred-scaled strand bias P-value&nbsp;(require -g/-u)<br>-u     Similar to -g except that the output is uncompressed BCF, which is preferred for piping. </p>
+<p>Options for Genotype Likelihood Computation (for -g or -u):<br>-e INT     Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20]<br>-h INT     Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100]<br><span style="color: #ff00ff;">-I     Do not perform INDEL calling<br>-L INT     Skip INDEL calling if the average per-sample depth is above INT. [250]<br>-o INT     Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40]<br>-P STR     Comma dilimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]</span></span></span></pre></p>
+<h2>11. 使用bcftools</h2>
+<p>bcftools和samtools类似，用于处理vcf(variant call format)文件和bcf(binary call format)文件。前者为文本文件，后者为其二进制文件。</p>
+<p>bcftools使用简单，最主要的命令是view命令，其次还有index和cat等命令。index和cat命令和samtools中类似。此处主讲使用view命令来进行SNP和Indel calling。该命令的使用方法和例子为：</p>
+<pre>$ bcftools view [-AbFGNQSucgv] [-D <em>seqDict</em>] [-l <em>listLoci</em>] [-s <em>listSample</em>] 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [-i <em>gapSNPratio</em>] [-t <em>mutRate</em>] [-p <em>varThres</em>] [-P <em>prior</em>] 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [-1 <em>nGroup1</em>] [-d <em>minFrac</em>] [-U <em>nPerm</em>] [-X <em>permThres</em>] 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [-T <em>trioType</em>] <em>in.bcf</em> [<em>region</em>]
+
+<p><span style="color: #ff6600;">$ bcftools view -cvNg abc.bcf &gt; snp_indel.vcf</span></pre></p>
+<p>生成的结果文件为vcf格式，有10列，分别是：1 参考序列名；2 varianti所在的left-most位置；3 variant的ID（默认未设置，用’.'表示)；4 参考序列的allele；5 variant的allele(有多个alleles，则用’,'分隔);6 variant/reference QUALity;7 FILTers applied;8 variant的信息，使用分号隔开；9 FORMAT of the genotype fields, separated by colon (optional)； 10 SAMPLE genotypes and per-sample information (optional)。<br>
+例如：</p>
+<pre>scaffold_1      2847    .       A       AACGGTGAAG      194     .       INDEL;DP=11;VDB=0.0401;AF1=1;AC1=2;DP4=0,0,8,3;MQ=35;FQ=-67.5   GT:PL:GQ        1/1:235,33,0:63
+scaffold_1      3908    .       G       A       111     .       DP=13;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,5,7;MQ=42;FQ=-63   GT:PL:GQ        1/1:144,36,0:69
+scaffold_1      4500    .       A       G       31.5    .       DP=8;VDB=0.0034;AF1=1;AC1=2;DP4=0,0,1,3;MQ=42;FQ=-39    GT:PL:GQ        1/1:64,12,0:21
+scaffold_1      4581    .       TGGNGG  TGG     145     .       INDEL;DP=8;VDB=0.0308;AF1=1;AC1=2;DP4=0,0,0,8;MQ=42;FQ=-58.5    GT:PL:GQ        1/1:186,24,0:45
+scaffold_1      4644    .       G       A       195     .       DP=21;VDB=0.0198;AF1=1;AC1=2;DP4=0,0,10,10;MQ=42;FQ=-87 GT:PL:GQ        1/1:228,60,0:99
+scaffold_1      4827    .       NACAAAGA        NA      4.42    .       INDEL;DP=1;AF1=1;AC1=2;DP4=0,0,1,0;MQ=40;FQ=-37.5       GT:PL:GQ        0/1:40,3,0:3
+scaffold_1      4854    .       A       G       48      .       DP=6;VDB=0.0085;AF1=1;AC1=2;DP4=0,0,2,1;MQ=41;FQ=-36    GT:PL:GQ        1/1:80,9,0:16
+scaffold_1      5120    .       A       G       85      .       DP=8;VDB=0.0355;AF1=1;AC1=2;DP4=0,0,5,3;MQ=42;FQ=-51    GT:PL:GQ        1/1:118,24,0:45</pre>
+<p>第8列中显示了对variants的信息描述，比较重要，其中的 Tag 的描述如下：</p>
+<pre>Tag    Format    Description
+AF1    double    Max-likelihood estimate of the site allele frequency (AF) of the first ALT allele
+DP    int    Raw read depth (without quality filtering)
+DP4    int[4]    # high-quality reference forward bases, ref reverse, alternate for and alt rev bases
+FQ    int    Consensus quality. Positive: sample genotypes different; negative: otherwise
+MQ    int    Root-Mean-Square mapping quality of covering reads
+PC2    int[2]    Phred probability of AF in group1 samples being larger (,smaller) than in group2
+PCHI2    double    Posterior weighted chi^2 P-value between group1 and group2 samples
+PV4    double[4]    P-value for strand bias, baseQ bias, mapQ bias and tail distance bias
+QCHI2    int    Phred-scaled PCHI2
+RP    int    # permutations yielding a smaller PCHI2
+CLR    int    Phred log ratio of genotype likelihoods with and without the trio/pair constraint
+UGT    string    Most probable genotype configuration without the trio constraint
+CGT    string    Most probable configuration with the trio constraint</pre>
+<p>bcftools view 的具体参数如下：</p>
+<pre>Input/Output Options:
+-A     Retain all possible alternate alleles at variant sites. By default, the view command discards unlikely alleles.
+-b     Output in the BCF format. The default is VCF.
+-D FILE Sequence dictionary (list of chromosome names) for VCF-&gt;BCF conversion [null]
+-F     Indicate PL is generated by r921 or before (ordering is different).
+-G     Suppress all individual genotype information.
+-l FILE List of sites at which information are outputted [all sites]
+<span style="color: #ff00ff;">-N     Skip sites where the REF field is not A/C/G/T
+-Q     Output the QCALL likelihood format
+-s FILE List of samples to use. The first column in the input gives the sample names and the second gives the ploidy, which can only be 1 or 2. When the 2nd column is absent, the sample ploidy is assumed to be 2. In the output, the ordering of samples will be identical to the one in FILE. [null]
+-S     The input is VCF instead of BCF.
+-u     Uncompressed BCF output (force -b). 
+
+<p>Consensus/Variant Calling Options:<br><span style="color: #ff00ff;">-c     Call variants using Bayesian inference. This option automatically invokes option -e.<br><span style="color: #ff00ff;">-d FLOAT When -v is in use, skip loci where the fraction of samples covered by reads is below FLOAT. [0]<br>&nbsp; &nbsp; &nbsp; &nbsp; 当有多个sample用于variants calling时，比如多个转录组数据或多个重测序<br>&nbsp; &nbsp; &nbsp; &nbsp; 数据需要比对到参考基因组上，设置该值，表明至少有该&lt;float 0~1&gt;比例的<br>&nbsp; &nbsp; &nbsp; &nbsp; samples在该位点都有覆盖才计算入variant.所以对于只有一个sample的情况<br>&nbsp; &nbsp; &nbsp; &nbsp; 下，该值设置在0～1之间没有意义，大于1则得不到任何结果。<br><span style="color: #ff00ff;">-e     Perform max-likelihood inference only, including estimating the site allele frequency, testing Hardy-Weinberg equlibrium and testing associations with LRT.<br>-g     Call per-sample genotypes at variant sites (force -c)<br>-i FLOAT Ratio of INDEL-to-SNP mutation rate [0.15]<br>-p FLOAT A site is considered to be a variant if P(ref|D)<br>-t FLOAT Scaled muttion rate for variant calling [0.001]<br>-T STR     Enable pair/trio calling. For trio calling, option -s is usually needed to be applied to configure the trio members and their ordering. In the file supplied to the option -s, the first sample must be the child, the second the father and the third the mother. The valid values of STR are ‘pair’, ‘trioauto’, ‘trioxd’ and ‘trioxs’, where ‘pair’ calls differences between two input samples, and ‘trioxd’ (‘trioxs’) specifies that the input is from the X chromosome non-PAR regions and the child is a female (male). [null]<br><span style="color: #ff00ff;">-v     Output variant sites only (force -c) </p>
+<p>Contrast Calling and Association Test Options:<br>-1 INT     Number of group-1 samples. This option is used for dividing the samples into two groups for contrast SNP calling or association test. When this option is in use, the following VCF INFO will be outputted: PC2, PCHI2 and QCHI2. [0]<br>-U INT     Number of permutations for association test (effective only with -1) [0]<br>-X FLOAT Only perform permutations for P(chi^2)</span></span></span></span></span></pre></p>
+<p>使用bcftools得到variant calling结果后。需要对结果再次进行过滤。主要依据比对结果中第8列信息。其中的 DP4 一行尤为重要，提供了4个数据：1 比对结果和正链一致的reads数、2 比对结果和负链一致的reads数、3 比对结果在正链的variant上的reads数、4 比对结果在负链的variant上的reads数。可以设定 （value3 + value4）大于某一阈值，才算是variant。比如：</p>
+<pre>$ perl -ne 'print $_ if /DP4=(\d+),(\d+),(\d+),(\d+)/ &amp;&amp; ($3+$4)&gt;=10 &amp;&amp; ($3+$4)/($1+$2+$3+$4)&gt;=0.8' snp_indel.vcf &gt; snp_indel.final.vcf</pre>
+<h2>12. samtools rmdup</h2>
+<p>NGS上机测序前需要进行PCR一步，使一个模板扩增出一簇，从而在上机测序的时候表现出为1个点，即一个reads。若一个模板扩增出了多簇，结 果得到了多个reads，这些reads的坐标(coordinates)是相近的。在进行了reads比对后需要将这些由PCR duplicates获得的reads去掉，并只保留最高比对质量的read。使用rmdup命令即可完成.</p>
+<pre>Usage:  samtools rmdup [-sS]  
+-s 对single-end reads。默认情况下，只对paired-end reads
+-S 将Paired-end reads作为single-end reads处理。
+
+<p>$ samtools input.sorted.bam output.bam<br><br><br><span style="color: #ff0000;"><strong>sam 和 bam 格式转换</strong></span><br><strong>BAM转换为SAM</strong><br>samtools view -h -o out.sam out.bam <br><strong>SAM转换为BAM</strong><br>samtools view -bS out.sam &gt;out.bam<br>-b 意思使输出使BAM format<br>-S 意思使输入使SAM，如果@SQ 缺剩， 要写-t <br>所以如果没有@SQ<br>samtools faidx ref.fa<br>samtools view -bt ref.fa.fai out.sam &gt; out.bam<br><br><br><strong>REF: <br><a href="http://www.chenlianfu.com/?p=1399" target="_blank">http://www.chenlianfu.com/?p=1399</a><br><a href="http://en.wikipedia.org/wiki/SAMtools" target="_blank">http://en.wikipedia.org/wiki/SAMtools<br>http://www.htslib.org/doc/samtools-1.1.html<br>http://sourceforge.net/projects/samtools/files/<br></a><a href="http://samtools.sourceforge.net/samtools.shtml" target="_blank">http://samtools.sourceforge.net/samtools.shtml</a><a href="http://en.wikipedia.org/wiki/SAMtools" target="_blank"><br><br></a><br></strong></pre></p>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(4316581,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">3</span>
+    </div>
+    <div class="buryit" onclick="votePost(4316581,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/emanlee/p/4316573.html" target="_blank" rel="noopener" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/emanlee/p/4316573.html" target="_blank" rel="noopener" title="发布于2015-03-05 19:06">linux下bwa和samtools的安装与使用</a><br><a href="https://www.cnblogs.com/emanlee/p/4316587.html" target="_blank" rel="noopener" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/emanlee/p/4316587.html" target="_blank" rel="noopener" title="发布于2015-03-05 19:17">bwa的使用方法</a><br></div>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="CNS0kLj9rd8CFQyLvQodbGAMnw">
+    <script>
+    if (new Date() >= new Date(2018, 9, 13)) {
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1539008685004-0'); });
+    }
+    </script>
+    <div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1" data-load-complete="true" src="./samtools常用命令详解 - emanlee - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/615413/" target="_blank">贾跃亭又晒“自拍”！没躲在别墅，在预量产车下线现场</a><br> ·  <a href="https://news.cnblogs.com/n/615412/" target="_blank">Facebook被爆用外部APP采集约会等隐私</a><br> ·  <a href="https://news.cnblogs.com/n/615411/" target="_blank">土巴兔被曝撤销IPO申请 公司称静默期不便回应</a><br> ·  <a href="https://news.cnblogs.com/n/615410/" target="_blank">ofo回应是否有钱退押金：商业机密，不便透露</a><br> ·  <a href="https://news.cnblogs.com/n/615409/" target="_blank">Facebook到底有没有卖用户私信？全文声明在这里</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+
+</div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+
+<iframe id="google_osd_static_frame_6394911579588" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./samtools常用命令详解 - emanlee - 博客园_files/saved_resource(1).html"></iframe></body></html></div><div class="post-copyright"><blockquote><p>原文作者: Billy</p><p>原文链接: <a href="http://yoursite.com/2019/06/16/samtools常用命令详解[转载]/">http://yoursite.com/2019/06/16/samtools常用命令详解[转载]/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/%E4%BA%8C%E4%BB%A3%E6%B5%8B%E5%BA%8F/">二代测序</a><a href="/tags/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/">软件教程</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/06/22/Python3-argparse%E7%94%A8%E6%B3%95%E7%AC%94%E8%AE%B0/" class="pre">Python3：参数解析包argparse</a><a href="/2019/06/16/%E5%88%A9%E7%94%A8AutoDOCK%E8%BF%9B%E8%A1%8C%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5%EF%BC%88%E4%B8%80%EF%BC%89/" class="next">利用AutoDOCK进行分子对接（一）</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#blogTitle"><span class="toc-text">EmanLee, Eman Lee&#39;s Space (blog, website) </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#blogTitle"><span class="toc-text">EmanLee, Eman Lee&#39;s Space (blog, website) </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#topics"><span class="toc-text">
+            samtools常用命令详解
+        </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">1. view</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">2. sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">3.merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">4.index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">5. faidx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">6. tview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">7. flagstat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">7. depth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">8. 其它有用的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">9. 将bam文件转换为fastq文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">10. mpileup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">11. 使用bcftools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cnblogs_post_body"><span class="toc-text">12. samtools rmdup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sidebar_postcategory"><span class="toc-text">随笔分类</span></a></li></ol></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/25/Jupyter%20notebook%20server/">Jupyter notebook server 搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/%E8%A1%A8%E8%A7%82%E7%BB%84%E6%9F%93%E8%89%B2%E4%BD%93%E5%BC%80%E6%94%BE%E5%8C%BA%E5%9F%9F%E5%88%86%E6%9E%90%E2%80%94ATAC-seq/">表观组染色体开放区域分析：ATAC-seq</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/05/%E8%BD%AC%E5%BD%95%E7%BB%84%E5%B7%AE%E5%BC%82%E8%A1%A8%E8%BE%BE%E5%88%86%E6%9E%90%E2%80%94%E2%80%94kallisto/">转录组差异表达分析--免比对工具kallisto</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/26/%E8%BD%AC%E5%BD%95%E7%BB%84%E5%B7%AE%E5%BC%82%E8%A1%A8%E8%BE%BE%E5%88%86%E6%9E%90%E6%A6%82%E8%BF%B0/">转录组差异表达分析概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/poretools--fast5%E6%A0%BC%E5%BC%8F%E5%A4%84%E7%90%86/">poretools--fast5格式处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/31/GATK4%E2%80%94germline%20SNP%20calling/">GATK4：germline SNP calling</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/16/%E5%88%A9%E7%94%A8Openbabel%E9%A2%84%E5%A4%84%E7%90%86%E5%B0%8F%E5%88%86%E5%AD%90/">利用Openbabel预处理小分子数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/11/Window%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85PyMOL/">Window系统下安装PyMOL</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/02/%E5%88%A9%E7%94%A8DOCK6%E8%BF%9B%E8%A1%8C%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5/">利用DOCK6进行分子对接</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/22/Python3-argparse%E7%94%A8%E6%B3%95%E7%AC%94%E8%AE%B0/">Python3：参数解析包argparse</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E4%BB%A3%E6%B5%8B%E5%BA%8F/">二代测序</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BA%B3%E7%B1%B3%E5%AD%94%E6%B5%8B%E5%BA%8F/">纳米孔测序</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BE%85%E5%8A%A9%E8%8D%AF%E7%89%A9%E8%AE%BE%E8%AE%A1/">计算机辅助药物设计</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/">软件教程</a><span class="category-list-count">2</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BE%85%E5%8A%A9%E8%8D%AF%E7%89%A9%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;">计算机辅助药物设计</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">神经网络</a> <a href="/tags/%E8%B0%B1%E7%B3%BB%E5%8F%98%E5%BC%82%E4%BD%8D%E7%82%B9/" style="font-size: 15px;">谱系变异位点</a> <a href="/tags/%E4%BA%8C%E4%BB%A3%E6%B5%8B%E5%BA%8F/" style="font-size: 15px;">二代测序</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">编程语言</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/" style="font-size: 15px;">软件教程</a> <a href="/tags/%E7%BA%B3%E7%B1%B3%E5%AD%94%E6%B5%8B%E5%BA%8F/" style="font-size: 15px;">纳米孔测序</a> <a href="/tags/%E8%A1%A8%E8%A7%82%E7%BB%84/" style="font-size: 15px;">表观组</a> <a href="/tags/%E6%B5%8B%E5%BA%8F%E5%88%86%E6%9E%90/" style="font-size: 15px;">测序分析</a> <a href="/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/" style="font-size: 15px;">转录组</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">13</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://asia.ensembl.org/index.html" title="ensembl" target="_blank">ensembl</a><ul></ul><a href="https://sci-hub.tw/" title="sci-hub" target="_blank">sci-hub</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Billy.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
