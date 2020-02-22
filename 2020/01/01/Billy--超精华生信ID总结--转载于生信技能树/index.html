@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>超精华生信ID总结--转载于生信技能树 | Billy and Barney's Blog</title><meta name="generator" content="Hexo 4.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">超精华生信ID总结--转载于生信技能树</h1><a id="logo" href="/.">Billy and Barney's Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">超精华生信ID总结--转载于生信技能树</h1><div class="post-meta"><a href="/2020/01/01/Billy--%E8%B6%85%E7%B2%BE%E5%8D%8E%E7%94%9F%E4%BF%A1ID%E6%80%BB%E7%BB%93--%E8%BD%AC%E8%BD%BD%E4%BA%8E%E7%94%9F%E4%BF%A1%E6%8A%80%E8%83%BD%E6%A0%91/#comments" class="comment-count"></a><p><span class="date">Jan 01, 2020</span><span><a href="/categories/Billy/" class="category">Billy</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>要想成为一名合格的生物信息工程师,首要条件就是能在各大生信数据库中自由翱翔。目前的生信数据库大体可以分为三类:</p>
+<p>   (1) 核酸数据库(例如:GenBank,Ensembl等)</p>
+<p>   (2) 蛋白质数据库(例如:Uniprot,PDB等</p>
+<p>   (3) 专用数据库(例如:KEGG,GO,GEO等等)</p>
+<p>可以说数据库的种类和数量都非常的繁多!同时,每个数据库都有自己独特的检索ID编号(例如Entrez ID,Ensembl ID 等等),也就是说同一个基因在不同的数据库中会有不同的名称。这么多生信ID和数据库看着真是眼花缭乱。。。我们几乎不可能全部都记住!所以,为了提高学习效率,我们首先来看看生信领域最流行使用的数据库有哪些吧,然后再针对性地去学习相应的数据库和它们的编号系统!</p>
+<h3 id="一-各大生信资源的使用流行程度"><a href="#一-各大生信资源的使用流行程度" class="headerlink" title="(一) 各大生信资源的使用流行程度"></a>(一) 各大生信资源的使用流行程度</h3><p>PLOS-ONE上的一篇文章利用bioNerDS工具分析了Pubmed的 5,411,968篇文献的语料库,最终得到下列生信领域的资源使用排名:</p>
+<div align = "center">
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Mention Level</th>
+<th></th>
+<th>Document Level</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GO</td>
+<td>2.08</td>
+<td>R</td>
+<td>0.29</td>
+</tr>
+<tr>
+<td>R</td>
+<td>1.17</td>
+<td>GO</td>
+<td>0.19</td>
+</tr>
+<tr>
+<td>BLAST</td>
+<td>0.62</td>
+<td>BLAST</td>
+<td>0.16</td>
+</tr>
+<tr>
+<td>PDB</td>
+<td>0.43</td>
+<td>GenBank</td>
+<td>0.13</td>
+</tr>
+<tr>
+<td>KEGG</td>
+<td>0.43</td>
+<td>GEO</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td>GenBank</td>
+<td>0.35</td>
+<td>KEGG</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td>Ensembl</td>
+<td>0.24</td>
+<td>PDB</td>
+<td>0.08</td>
+</tr>
+<tr>
+<td>Pfam</td>
+<td>0.20</td>
+<td>Cluster</td>
+<td>0.06</td>
+</tr>
+<tr>
+<td>Cluster</td>
+<td>0.18</td>
+<td>UniProt</td>
+<td>0.05</td>
+</tr>
+</tbody></table>
+</div>
+
+<p>从这张表,我们可以明显发现生信领域的NCBI-GenBank, UniProt, GO, KEGG和GEO等数据库的使用频率都非常高。所以,我们的学习就从这些主要的数据库开始!</p>
+<h3 id="二-生信数据库的霸主-NCBI以及Entrez检索系统"><a href="#二-生信数据库的霸主-NCBI以及Entrez检索系统" class="headerlink" title="(二) 生信数据库的霸主-NCBI以及Entrez检索系统"></a>(二) 生信数据库的霸主-NCBI以及Entrez检索系统</h3><p>谈到生信数据库,就不得不提非常著名的NCBI。NCBI是什么呢</p>
+<blockquote>
+<p>NCBI(National Center for Biotechnology information)即美国国家生物技术信息中心,由美国国立卫生医学图书馆(NLM)于1988年建立。该中心的任务是:为储存和分析分子生物学、生物化学、遗传学知识创建自动化系统;从事研究基于计算机的信息处理过程的高级方法,用于分析生物学上重要的分子和化合物的结构与功能;促进生物学研究人员和医护人员应用数据库和软件;努力协作以获取世界范围内的生物技术信息。</p>
+</blockquote>
+<p>所以,需要明确的是,我们常说的NCBI是一个机构组织,而不是数据库喔。那么,我们登陆的NCBI的网页(<a href="https://www.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/</a>) 所访问的数据库和NCBI是什么关系呢?那就不得不提Entrez啦!</p>
+<blockquote>
+<p>Entrez是归属于NCBI的一个综合的文本检索引擎系统。这个检索引擎整合了PubMed数据库的生物医学文献与其他39个文献和分子数据库(例如GEO,Entrez Gene等,这些数据库基本涵盖了DNA和蛋白质序列,结构,基因,基因组,遗传变异和基因表达方面的数据)。</p>
+</blockquote>
+<p>所以,我们通常所说的检索NCBI数据库,其实就是在<strong>检索Entrez这个引擎系统所整合的生信数据库</strong>。简而言之就是,NCBI组织建立了Entrez,Entrez整合了各大数据库的入口,方便我们进行数据库检索。</p>
+<p>了解了NCBI和Entrez的关系之后,我们来看看还有哪些常用的数据库吧。</p>
+<p>假设我们现在想检索一个名字叫做TP53的基因,了解它的故事,我们应该去哪个数据库呢?同时,TP53只是这个基因多个名称中的一个(它还有其它的名字,例如:7157,HGNC:11998等等),所以这些不同的基因名称之间又有什么区别呢?<br>OK , 让我们一一道来!</p>
+<p>首先,要想快速了解一个Gene并且获取和它相关链接的外链数据库,我们首推Entrez Gene数据库!什么是Entrez Gene数据库呢?</p>
+<h3 id="三-Gene查找好帮手-Entrez-Gene数据库"><a href="#三-Gene查找好帮手-Entrez-Gene数据库" class="headerlink" title="(三) Gene查找好帮手-Entrez Gene数据库"></a>(三) Gene查找好帮手-Entrez Gene数据库</h3><p>Entrez Gene数据库是Gene查找的好帮手,一般情况下我们如果想快速了解一个Gene的基本信息,可以直接进入(<a href="https://www.ncbi.nlm.nih.gov/gene/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/gene/</a>) 进行搜索。</p>
+<blockquote>
+<p>NCBI的Gene数据库<br>Entrez Gene数据库其实就是我们现在指的NCBI中的Gene数据库(这两个名字指的是同一个数据库)<br>Gene数据库建立的目的是,整合各个方面和基因相关的数据资源,构建一个能够使人快速访问并且获取特定基因信息的访问入口,从而为数据交换以及科学家们的研究提供便利。它的数据包含了和基因相关的序列,结构,以及基因表达等等的信息,是基因资源的综合数据库。</p>
+</blockquote>
+<p>我们输入TP53之后会得到这样的检索结果界面:</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/8wqydltmgj.jpeg?imageView2/2/w/1620" alt="Fig1"></p>
+<p>在标题下面,我们可以看到Gene ID: 7157 这一行,7157就是我们耳熟能详的Entrez Gene ID啦,它是目前国际上最权威的<strong>Gene ID编号</strong>!</p>
+<blockquote>
+<p>Entrez Gene ID 又可以称为Entrez ID ,也是我们通常所说的Gene ID 。它是来源于Entrez Gene数据库的编号系统。每个Gene数据库中的记录数据都会被分配一个唯一的Gene ID编号。<br>编号的格式就是一串数字,例如:7157,2131这样的。同时,Gene ID的数字并不是连续分配的(也就是说有间隔)。<br>Gene ID的分配规则:Gene ID通常被分配给RefSeq数据库中注释为基因的对象,当然,并不是所有的Gene ID都基于RefSeq,如果RefSeq数据库中没有记录,也可以指定GeneID。<br>需要注意的是,Gene ID编号的命名是具有物种特异性的(例如,编码人的肌营养不良蛋白的基因和编码小鼠肌营养不良蛋白的基因,它们俩的Gene ID在Gene数据库中编号是不一样的,分别是:1756 和 13405)。</p>
+</blockquote>
+<p>关于Entrez Gene数据库,我们还可以来看看一个统计数字</p>
+<blockquote>
+<p>Entrez Gene 中目前一共有61118条人类的Gene ID记录(记录包括功能基因,假基因,预测基因等等),68389条小鼠Gene ID的记录,可以说是非常全面了。</p>
+</blockquote>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/i7iaqijqf3.png?imageView2/2/w/1620" alt="fig2"></p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/1dpo3yz5fl.png?imageView2/2/w/1620" alt=""></p>
+<p>同时,Gene数据库中的ID记录是每日更新一次,可以保证我们每天看到的Gene ID记录都是最新的啦</p>
+<p>Entrez Gene数据库现在既然这么厉害,那它最初的时候是什么模样呢,聊聊历史吧</p>
+<blockquote>
+<p>Gene数据库首次公开是在1999年,那时它的名字还不叫Gene,而是叫做LocusLink(曾用名,现已不再使用)。当时刚刚发表的LocusLink只包含了人类这一个物种的数据信息,而且只有不多于9000条的记录。LocusLink的外链数据库也只有dbSNP, OMIM, RefSeq, GenBank, 和UniGene。(见下图)</p>
+</blockquote>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/czcd5hqdfj.jpeg?imageView2/2/w/1620" alt=""></p>
+<p>而到2003年,Entrez Gene数据库发布,Gene数据库的数据已经包含了10个物种,195000条记录,外链数据库也增加了许多,包括dbSNP, Ensembl, the HUGO Gene Nomenclature Committee (HGNC), GEO, Map Viewer等等。至今,随着生物大数据的爆发式增长,Gene数据库包含的数据记录与外链数据库也越来越多,已经成为生信工作者必不可少的工具之一。</p>
+<p>可见,我们的Enrez Gene数据库的发展也是很迅速哒!</p>
+<p>了解完Entrez Gene之后,我们再接着往下看,出现了Summary这一栏,首先映入眼帘的是三行</p>
+<ul>
+<li>Official Symbol:TP53 provided by HGNC</li>
+<li>Official Full Name:tumor protein p53 provided by HGNC </li>
+<li>Primary source HGNC:HGNC:11998</li>
+</ul>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/arpr7rysxa.png?imageView2/2/w/1620" alt=""></p>
+<p>不约而同,这三行的内容来源均是HGNC,什么是HGNC呢?</p>
+<p>(四) 人类基因命名委员会-HGNC</p>
+<p>人类中大多数基因的命名,是由HGNC(HUGO Gene Nomenclature Committee,人类基因命名委员会)来完成的。</p>
+<blockquote>
+<p>HGNC(HUGO Gene Nomenclature Committee)即人类基因命名委员会,是由美国国家人类基因组研究所(NHGRI)和英国惠康信托基金(Wellcome Trust)共同出资成立的非盈利机构。<br>早在二十世纪60年代的时候,科学家们就意识到基因规范命名的重要性。于是1979年,在爱丁堡的人类基因组会议(HGM)上,Phyllis J. McAlpine博士所组成的命名委员会首次提出了人类基因命名规范。2007年9月,HGNC搬迁到欧洲生物信息学研究所(EBI)。目前,HGNC可以说是国际上非常权威的人类基因命名组织了<br>目前,HGNC已经批准了超过41500个Gene Symbol ,其中超过19190个基因属于蛋白质编码基因,超过 7300个基因属于非编码RNA的基因,同时HGNC还为假基因以及基因组特征命名。HGNC也允许个人在遵循命名规范的前提下,向他们提交Gene Symbol的命名。</p>
+</blockquote>
+<p>所以,刚才我们看到的Official Symbol(Gene Symbol),Official Full Name,HGNC:ID的含义分别是:</p>
+<blockquote>
+<p><strong>HUGO Gene Symbol</strong>:HUGO Gene Symbol(也叫做HGNC Symbol,即基因符号)是HGNC组织对基因进行命名描述的一个<strong>缩写标识符</strong>(如:TP53),这些基因符号都是唯一的。</p>
+<p><strong>Gene Name</strong>:Gene Name是经过HGNC批准的<strong>全基因名称</strong>;对应于上面批准的符号(Gene Symbol)。例如TP53对应的Gene Name就是:tumor protein p53 。</p>
+<p><strong>HGNC ID</strong>:HGNC ID是HGNC数据库分配的基因编号,每一个标准的Symbol都有对应的HGNC ID 。我们可以用这个编号,在HGNC数据库中搜索相关的基因。例如:HGNC:11998<br>有时候HGNC会对一些已经命名过的基因进行重新审查和重新命名,以确保新的基因命名在描述基因功能方面更加的准确。当一个基因被HGNC分配了新的Gene Symbol时,它之前的命名,会被当作同义词继续使用,<strong>所以一般建议使用HGNC ID而不是HGNC Symbol来作为我们处理数据中的唯一标识符</strong>。</p>
+</blockquote>
+<p>同时,需要明确的是,因为<strong>HGNC只对人类基因进行命名</strong>,而且并不是所有的基因都有Official Symbol。所以如果基因缺少HGNC提供的Gene Symbol ,Entrez Gene数据库中的Official symbol就会变成Gene Symbol,并且Gene Symbol的编号会变成<strong>LOC前缀+Entrez ID</strong>,例如:LOC4333818</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/0c8eypei87.png?imageView2/2/w/1620" alt=""></p>
+<p>关于基因命名的组织委员会:</p>
+<p>除了人类之外,对于一些典型的模式物种而言,也有相关的命名委员会。小鼠(mouse)的基因命名是来源于MGNC(可访问MGI数据库),大鼠(rat)基因命名来源于RGNC(可访问RGD数据库),斑马鱼的基因命名来源于ZFIN。还有一些其它物种的基因命名,基本就来源于NCBI的Gene数据库和Uniprot数据库。如果有些基因这些数据库里都没有命名,那么一般会直接从一些典型的模式物种(例如小鼠,斑马鱼等)的同源基因命名中引进。</p>
+<hr>
+<p>了解完HGNC之后,回到刚才的话题,在TP53的检索结果接着向下看,会看到See related这一行,它提供了和TP53这个基因相关的外链数据库的连接。即Ensembl ,MIM以及Vega 。</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/kb65obbesi.png?imageView2/2/w/1620" alt=""></p>
+<p><strong>Ensembl:ENSG00000141510</strong> 即Ensembl数据库的ID编号,<strong>MIM:191170</strong>是来源于OMIM数据库(Online Mendelian Inheritance in Man ,人类孟德尔遗传在线数据库)的编号。<strong>Vega:OTTHUMG00000162125</strong>来自Vega数据库(Vertebrate Genome Annotation,脊椎动物基因组注释 )</p>
+<p>其中,Ensembl ID可以说是非常常见了,基本做生信的人都要接触。所以,让我们来详细了解一下Ensembl数据库!</p>
+<h3 id="四-Ensembl计划"><a href="#四-Ensembl计划" class="headerlink" title="(四) Ensembl计划"></a>(四) Ensembl计划</h3><p>首先看看Ensembl是什么</p>
+<blockquote>
+<p>Ensembl基因组数据库项目是欧洲生物信息研究所和Wellcome Trust Sanger研究所之间的一个联合科学项目,该项目于1999年启动,以应对即将完成的人类基因组计划。Ensembl旨在为遗传学家,分子生物学家和其他研究我们自己的物种和其他脊椎动物和模式生物的基因组的研究人员提供集中资源。Ensembl是用于检索基因组注释信息的几种众所周知的基因组浏览器之一。</p>
+<p>同时,需要注意的是,Ensembl中的基因组注释由两部分组成:<strong>计算机自动注释(例如全基因组的转录本注释)以及人工注释</strong>。</p>
+<p>人工注释主要针对选定的物种(如:人类,小鼠,斑马鱼等等)。人工注释由Havana(Human and Vertebrate Analysis and Annotation)小组来完成。(我们在gtf注释文件中看到的HAVANA指的就是他们!HAVANA小组最开始是在Sanger研究所,2017年的时候迁往EBI了)</p>
+</blockquote>
+<p>提到Ensembl,还有2个大名鼎鼎的计划也不得不提!那就是ENCODE和GENCODE</p>
+<blockquote>
+<p>Ensembl与ENCODE以及GENCODE计划之间的关系<br><strong>Ensembl是ENCODE计划的子项目</strong>。而GENCODE计划(由Sanger研究所维护)则是ENCODE项目的衍生品,它的目标是为ENCODE项目提供可用的人类基因组和小鼠基因组注释。Ensembl在ENCODE计划中的作用是,为人类基因组的组装提供计算机的自动注释信息,并且把这些自动注释的信息和来自HAVANA的人工注释信息进行合并。GENCODE中的人类和小鼠的基因组注释和Ensembl数据库是同步发行的。<br>关于GENCODE的详细介绍,可以看本文最后的拓展阅读。</p>
+</blockquote>
+<p>OK,了解完Ensembl数据库是做什么的之后,我们就可以使用Ensembl数据库来检索感兴趣的基因在基因组上的信息了。</p>
+<p>我们在Ensembl中进行检索主要使用的是Ensembl Stable ID(也就是常说的Ensembl ID),例如:ENSG00000141510 。Ensembl ID也是有自己的命名规则的</p>
+<blockquote>
+<p>Ensembl Stable ID的定义,格式,版本</p>
+<p>Ensembl Stable ID是来源于Ensembl数据库的编号系统。它的命名由三部分组成:</p>
+<p>[species prefix][feature type prefix][a unique eleven digit number]</p>
+<p>[根据不同物种设置的前缀][数据所指类型【例如,蛋白质,基因】][一段特定的数字]</p>
+</blockquote>
+<p>所以一个小鼠的基因在Ensmebl中的编号命名就应该是:ENSMUSG########### 。有时可以有不同的版本, 则在 Ensembl ID 后面加上小数点和版本号(例如:ENSG00000223972.5)。</p>
+<p>Ensembl Stable ID版本号的更替是遵循一定规则的,具体可看:<a href="https://asia.ensembl.org/info/genome/stable_ids/index.html" target="_blank" rel="noopener">https://asia.ensembl.org/info/genome/stable_ids/index.html</a></p>
+<p><a href="https://asia.ensembl.org/info/genome/compara/stable_ids.html" target="_blank" rel="noopener">https://asia.ensembl.org/info/genome/compara/stable_ids.html</a></p>
+<p><strong>常用的物种前缀:</strong></p>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>物种学名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ENSMUS</td>
+<td>Mus musculus (Mouse)</td>
+</tr>
+<tr>
+<td>ENSRNO</td>
+<td>Rattus norvegicus (Rat)</td>
+</tr>
+<tr>
+<td>ENSMZE</td>
+<td>Maylandia zebra (Zebra mbuna)</td>
+</tr>
+<tr>
+<td>MGP_LPJ_</td>
+<td>Mus musculus (Mouse LP/J)</td>
+</tr>
+<tr>
+<td>FB</td>
+<td>Drosophila melanogaster (Fruitfly)</td>
+</tr>
+<tr>
+<td>ENS</td>
+<td>Homo sapiens (Human)</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p><strong>类型前缀:</strong></p>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E</td>
+<td>exon</td>
+</tr>
+<tr>
+<td>FM</td>
+<td>Ensembl protein family</td>
+</tr>
+<tr>
+<td>G</td>
+<td>Gene</td>
+</tr>
+<tr>
+<td>GT</td>
+<td>gene tree</td>
+</tr>
+<tr>
+<td>P</td>
+<td>protein</td>
+</tr>
+<tr>
+<td>R</td>
+<td>regulatory feature</td>
+</tr>
+<tr>
+<td>T</td>
+<td>transcript</td>
+</tr>
+</tbody></table>
+<p>关于Ensembl,还有一点很重要,那就是它的数据是定期更新的!</p>
+<blockquote>
+<p>Ensembl的数据更新<br>Ensembl的数据大概2-3个月会更新一次,每次发布不同的版本的时候或者有什么计划安排,Ensembl都会在他们的博客或者Face-book,Twitter上发布消息(墙内的同学可以访问博客)。每次数据更新的范围涵盖新物种、新的基因集注释、新的变异数据等等。<br>到目前为止Ensembl的数据版本已经发布到94版了(2018年10月)</p>
+</blockquote>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/rm43jegzv2.png?imageView2/2/w/1620" alt=""></p>
+<p>如果想了解详细的版本信息和不同版本的数据可以访问:</p>
+<blockquote>
+<p><a href="http://asia.ensembl.org/info/website/archives/index.html" target="_blank" rel="noopener">http://asia.ensembl.org/info/website/archives/index.html</a><br><a href="ftp://ftp.ensembl.org/pub/" target="_blank" rel="noopener">ftp://ftp.ensembl.org/pub/</a></p>
+</blockquote>
+<p>既然数据更新了,那就有一个非常重要的问题,存储在Ensembl数据库中的Ensembl Stable ID是否会发生变动?</p>
+<p>OK,毕竟是大牛们做的项目,他们早就替我们想好啦。</p>
+<p>Ensembl Stable ID 名副其实的“Stable”,一旦被分配之后,是尽可能的保持稳定不更改的。但是也有不稳定的情况存在:</p>
+<blockquote>
+<p>一般情况下,如果某个基因数据发生一些小的改动,(例如某个基因对应的转录本信息发生变化),Ensembl Stable ID是不会变动的。但是Stable ID后面的Version会变化,就是在Ensembl ID 后面加上小数点和版本号。比如说:ENSG00000223972.5 。</p>
+<p>不一般的情况下,例如基因组组装序列的一些改变较大,或者基因组注释的更新影响了某个基因的整体模式。这时,我们的Ensembl才会分配新的Ensembl Stable ID啦!</p>
+<p>目前蛋白质家族的ID(fam),Ensembl EST基因的ID(ENSESTG)和 Genscan的ID (GENSCAN) 都是不稳定的。所以如果有小伙伴用了这些数据的Ensembl ID要注意保持这些ID的实时更新喔!</p>
+</blockquote>
+<p>如果我们想看自己感兴趣的Gene在Ensembl中是否发生过ID变动,我们应该怎么做呢? OK,Ensembl是非常全面哒!</p>
+<blockquote>
+<p>ID历史版本转换<br>Ensembl非常贴心的为我们提供了ID History Converter工具帮助使用者进行ID的新旧版本转换。有些数据的record里面,会有ID History一栏,帮助我们查看ID目前的版本和历史版本。例如:ENSG00000139618 的记录里就有 </p>
+</blockquote>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/j8db5q479v.png?imageView2/2/w/1620" alt=""></p>
+<p>好啦,关于Ensembl和Ensembl ID的介绍就到这里,了解完Ensembl之后,我们接着向下看,发现有一个RefSeq status REVIEWED。</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/f6xqjsg8dq.png?imageView2/2/w/1620" alt=""></p>
+<p>RefSeq status用于指明这个基因记录所对应的状态,REVIEWED说明它已经被专家审核。来看看RefSeq数据库。</p>
+<h3 id="五-NCBI非冗余序列数据库-RefSeq"><a href="#五-NCBI非冗余序列数据库-RefSeq" class="headerlink" title="(五) NCBI非冗余序列数据库-RefSeq"></a>(五) NCBI非冗余序列数据库-RefSeq</h3><blockquote>
+<p>RefSeq数据库,即RefSeq参考序列数据库,是美国国家生物信息技术中心(NCBI)提供的具有生物意义上的非冗余的基因和蛋白质等片段序列的数据库。</p>
+<p>RefSeq的序列数据来源于大名鼎鼎的INSDC(International Nucleotide Sequence Database Collaboration,国际核苷酸序列数据库联盟),所以RefSeq非常权威和全面!</p>
+</blockquote>
+<p>要知道现在是大数据时代,有非常多的数据,很多冗余的信息是没有用处的,而RefSeq能提供非冗余的序列,真的是非常有用了!我们来看看怎么在RefSeq中进行检索吧。</p>
+<p>RefSeq 有一套特殊的 Accesion Number(就是我们通常用的<strong>RefSeq ID</strong>)让我们来进行检索。<strong>RefSeq数据库中的Accession number和GenBank数据库中的AC号格式不同</strong>。</p>
+<blockquote>
+<p>RefSeq数据库Accession number的格式以两个字母开头,后跟一个下划线和六个或多个数字开头,例如:<br>NT_123456:constructed genomic contigs<br>NM_123456:mRNAs<br>NP_123456:proteins<br>NC_123456:chromosomes</p>
+</blockquote>
+<p><strong>ID的常见前缀</strong></p>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AC_</td>
+<td>Genomic</td>
+<td>Complete genomic molecule, usually alternate assembly</td>
+</tr>
+<tr>
+<td>NC_</td>
+<td>Genomic</td>
+<td>Complete genomic molecule, usually reference assembly</td>
+</tr>
+<tr>
+<td>NG_</td>
+<td>Genomic</td>
+<td>Incomplete genomic region</td>
+</tr>
+<tr>
+<td>NW_</td>
+<td>Genomic</td>
+<td>Contig or scaffold, primarily WGS</td>
+</tr>
+<tr>
+<td>NZ_</td>
+<td>Genomic</td>
+<td>Complete genomes and unfinished WGS data</td>
+</tr>
+<tr>
+<td>NM_</td>
+<td>mRNA</td>
+<td>Protein-coding transcripts (usually curated)</td>
+</tr>
+<tr>
+<td>NR_</td>
+<td>RNA</td>
+<td>Non-protein-coding transcripts</td>
+</tr>
+<tr>
+<td>NP_</td>
+<td>Protein</td>
+<td>Associated with an NM_ or NC_ accession</td>
+</tr>
+<tr>
+<td>其它</td>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody></table>
+<p>所以了解这些之后,我们就可以快乐的畅游在RefSeq的序列数据中了!</p>
+<p>同时,RefSeq的数据是每日更新的,所以大大的保障了我们科研的效率和及时性!对于人类的RefSeq而言,每条RefSeq后面都会有一个COMMENT,COMMENT会显示这条RefSeq的状态。</p>
+<p>主要有这些状态:MODEL(说明是自动被NCBI提供的,没有被审核过),INFERRED(由序列分析预测得到,没有经过实验验证),PREDICTED(没有经过人工审核),PROVISIONAL,REVIEWED(已被人工审核),VALIDATED(已经过初步审查,但还没有过最后审查)以及WGS。<br>所以我们在用RefSeq的序列时也要注意看看它的Status哟,看它是否是经过审核的!</p>
+<p>了解完RefSeq之后,我们也来看看其它著名的核酸序列数据库吧!</p>
+<h3 id="六-NCBI核酸序列数据库-GenBank"><a href="#六-NCBI核酸序列数据库-GenBank" class="headerlink" title="(六) NCBI核酸序列数据库-GenBank"></a>(六) NCBI核酸序列数据库-GenBank</h3><p>谈到核酸序列数据库,就不得不提NCBI的GenBank了</p>
+<blockquote>
+<p>GenBank是由美国国立生物技术信息中心(NCBI)维护的一级核酸序列数据库。GenBank数据库中也包括部分蛋白质序列,源于核酸序列注释结果。数据每天更新,每年发行六版release 。GenBank,EMBL和DDBJ同时组成了国际核苷酸序列数据库联盟,让核酸的序列信息得以共享,三大数据库的数据资源都是每天进行更新和交换。</p>
+</blockquote>
+<p>GenBank的数据来源渠道主要有三种:</p>
+<ol>
+<li>科研工作者提交的序列数据 </li>
+</ol>
+<p>2.与其他数据机构协作交换的数据 </p>
+<p>3.其他从测序中心获得的高通量数据。</p>
+<p>再来看一组数字</p>
+<blockquote>
+<p>GenBank的数据来源于260,000多个物种<br>GenBank中约有13%的序列来自于人类<br>数据量排名第一的物种是Homo sapiens(人类),其次是小鼠</p>
+</blockquote>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/0p3xuxdsxv.png?imageView2/2/w/1620" alt=""></p>
+<p>目前GenBank的数据已经发布到第227版本(截至2018年8月)</p>
+<p>可见我们的科研工作者对人类方面的研究是非常多的!所以数据很多。</p>
+<p>GenBank中既然有这么多数据,如果我们想在GenBank中进行序列检索,应该怎么做呢?</p>
+<blockquote>
+<p>可以有两种方式在GenBank中进行检索:<br>(1)泛式检索:例如直接输入感兴趣序列所在基因的名称或者提交作者姓名等<br>(2)特殊标识符检索:即GI号和Genbank的Accession number。</p>
+</blockquote>
+<p>第一种检索方式非常简单,这里就不再赘述。需要我们谈谈的是,第二种检索方式中的GI号和Accession number(注册号/登陆号)是什么含义。</p>
+<blockquote>
+<p>GI number: GI号(GenInfo Identifier,有时用小写字母“gi”表示)是核苷酸序列的序列标识号,由一系列简单的数字组成。它们被连续分配给NCBI处理的每个序列记录,如果一个序列以任何方式改变,那么一个新的GI号将被分配。需要注意的是,GI号和序列的Accession number没有什么关联。</p>
+<p>GenBank-Accession Number:Accession Number又叫做注册号/登录号,像GI号一样,它也是唯一的序列标识符。但是与GI号不同的是,AC号一旦分配就不会改变了。一个AC号通常是字母和数字的组合,例如一个字母后跟5位数(如U12345)或两个字母后跟6位数(如AF123456)。</p>
+</blockquote>
+<p>好啦,所以GI号和Accession number都是GenBank数据库中对某条序列进行标识的标识符。这里呢,还需要注意两个概念,那就是GI号和Accession Number.Version.我们的GI号和Accession Number.Version都是可以用来追踪一条序列的演化的。那么这两种标识符之间又有什么关系呢?</p>
+<blockquote>
+<p>GI号和Accession Number.Version</p>
+<p>NCBI的GI号和Accesion Number.Version是两种不同系统的标识符,它们是平行使用的。当序列的数据改变或升级时,将会分配一个新的GI number。Accession number主体编号不会改变,但是它所对应的版本(Accession number.Version)会随着增加。</p>
+<p>如NM_008261.1–&gt;NM_008261.2(GI number:6680238–&gt;46575915)。</p>
+</blockquote>
+<p>此外,关于GI号的使用,还有一段不得不说的历史。。。来看看吧:</p>
+<blockquote>
+<p>GI(GenInfo Identifier)号是NCBI很早就用来作为序列标识符的编号系统。但是国际核酸序列数据库联盟(GenBank、EMBL和DDBJ)刚成立时并没有统一的使用GI号,而是使用它们各自数据库内部的编号来追踪序列。后来,国际核酸序列数据库联盟(GenBank、EMBL和DDBJ)决定统一使用一个编号来唯一标识序列,于是它们创造了NID(核酸序列标识号)和PID(蛋白质序列标识号)。直到1999年12月,NID和PID的叫法才中断使用,对序列的唯一标识符又恢复成我们现在所熟知的GI号。</p>
+<p>同时,1992年的时候国际核苷酸序列数据库联盟(GenBank、EMBL和DDBJ)开始启用Accession Number.Version系统,确保了国际的通用性,并且对序列的标识性与追踪性更加地方便,Accession Number.Version与GI number平行运行。</p>
+<p>想了解更多详细的GI历史以及GI和Accession number.version的区别可见:<a href="https://www.ncbi.nlm.nih.gov/genbank/sequenceids/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/genbank/sequenceids/</a></p>
+</blockquote>
+<p>好啦,到此为止,我们就学习完GenBank数据库了。学完核酸序列数据库之后,下面,我们再来谈谈蛋白质序列数据库-Uniprot。</p>
+<h3 id="七-蛋白质序列数据库-Uniprot"><a href="#七-蛋白质序列数据库-Uniprot" class="headerlink" title="(七) 蛋白质序列数据库-Uniprot"></a>(七) 蛋白质序列数据库-Uniprot</h3><blockquote>
+<p>UniProt是Universal Protein 的英文缩写,是一级蛋白质序列数据库。<br>Uniprot整合了三大数据库(Swiss-Prot,TrEMBL和PIR-PSD)的数据,是目前国际上最广泛使用的蛋白质数据库(没有之一)。</p>
+</blockquote>
+<p>大多数情况,我们检索蛋白质序列信息,都是去的UniprotKB,所以掌握UniprotKB的搜索技巧就很重要啦!</p>
+<p>了解一下UniprotKB</p>
+<blockquote>
+<p>Uniprot中的UniprotKB(UniProt Knowledgebase)是收集蛋白质功能信息的中心枢纽,具有准确,一致,丰富的注释。UniprotKB主要由两部分组成:</p>
+<ol>
+<li>UniProtKB/Swiss-Prot (包含检查过的、手工注释的条目) </li>
+<li>UniProtKB/TrEMBL     (包含未校验的、自动注释的条目)</li>
+</ol>
+</blockquote>
+<p>由于UniProtKB/TrEMBL中的条目是由<strong>计算机自动注释</strong>的,所以我们可以看到UniProtKB/TrEMBL的数据数量远远超过了UniProtKB/Swiss-Prot中的数据数量。</p>
+<p>了解完基础背景知识之后,我们来看看UniprotKB中的编号ID是什么样的吧</p>
+<blockquote>
+<p>UniprotKB中主要有两种编号系统:Accession number和Entry name 。<br>由于UniprotKB包括了Swiss-Prot(人工注释)和TrEMBL(计算机注释),所以entry name有两种命名方式:UniprotKB/Swiss-Prot entry name和UniprotKB/TrEMBL entry names 。<br>UniprotKB/Swiss-Prot entry name<br>UniProt 中录入的数据都被分配了一个唯一的 Entry name。UniprotKB/Swiss-Prot Entry name可以由多达11个的大写字母+数字组成。它的命名方式可以表示为X_Y的形式。X是蛋白质或基因名称的缩写(并不是标准的Gene name),最多可以由五个字符组成。“_”表示下划线。Y代表物种的编码,最多也是只能由五个字符组成(通常由属名的前三个字母和种名的前两个字母组成)。<br>例如:<br>PURQ_ZYMMO<br>INS_HUMAN</p>
+</blockquote>
+<h4 id="UniprotKB-TrEMBL-entry-names"><a href="#UniprotKB-TrEMBL-entry-names" class="headerlink" title="UniprotKB/TrEMBL entry names"></a>UniprotKB/TrEMBL entry names</h4><p>UniProtKB/TrEMBL的Entry name 由多达16个大写字母数字字符组成,其命名形式类似于UniProtKB/Swiss-Prot,也是X_Y的形式。其中,X与登录号(Accession number)相同,由6或10个字母数字字符组成。“_”代表下划线。Y代表物种的编码,最多也是只能由五个字符组成。因为TrEMBL中的蛋白质数据太多,不可能所有的条目都人工进行物种编码。所以TrEMBL启用了“虚拟编码”来对物种进行分类。这些虚拟的物种编码都是以数字9为前缀,举例来说,如下:</p>
+<table>
+<thead>
+<tr>
+<th>Mnemomnic code</th>
+<th>Taxonomic identifier</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>9BACT</td>
+<td>2</td>
+<td>Bacteria</td>
+</tr>
+<tr>
+<td>9CNID</td>
+<td>6073</td>
+<td>Cnidaria</td>
+</tr>
+<tr>
+<td>9FUNG</td>
+<td>4751</td>
+<td>Fungi</td>
+</tr>
+<tr>
+<td>9REOV</td>
+<td>10880</td>
+<td>Reoviridae</td>
+</tr>
+</tbody></table>
+<h4 id="Accession-Number"><a href="#Accession-Number" class="headerlink" title="Accession Number"></a>Accession Number</h4><p>UniprotKB中的每个条目都会分配一个唯一的Accession Number。accession number不会随数据的更新而变化,只有数据被删除的时候,accession number才会被删除。所以它是非常稳定的标识符,相当于数据库中的主键。</p>
+<p>Uniprot的登录号(accession number)由6个或者10个字母数字的组合构成。构成方式是:</p>
+<p>[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z]0-9{1,2} </p>
+<p>例如:A2BC19, P12345, A0A022YWF9</p>
+<p>刚才我们看到了UniprotKB有两种编号系统,那么这两种编号之间有什么关系和区别呢?</p>
+<blockquote>
+<p><strong>Entry name与Accession Number的关系和区别</strong><br>提交数据到UniprotKB之后,每个数据都会被分配一个Accession Number(AC号),这个AC号是唯一的。为了减少数据冗余,如果将UniprotKB中的多个数据合并成一个,AC号仍然是保持不变的。<br>Entry name也是每个数据唯一具有的标识符,它可以展示数据的生物学信息。但是Entry name并不是稳定存在的,比如说我们要将TrEMBL中的数据转入Swiss-Prot,那么我们需要变更数据的Entry name,此时同一个数据的Entry name就发生了改变,但是它的AC号仍然保持不变。这就是他们之间的区别!<br>还有需要注意的是,一个数据可能有两个或者多个accession number 。<br>原因主要有两个:<br>1)当合并两个或多个数据条目时,保留所有数据条目的登录号。第一个AC编号称为“主要AC编号”,其他编号称为“次要AC编号”。编号排序是按字母数字顺序排列的。<br>2)如果现有数据条目被分割为两个或多个数据条目(“拆分”),新的“主要”登录号将归属于所有分裂的条目,而所有原始登录号将保留为“次要”登录号。例如:P29358 被拆分成 P68250 和 P68251 。P68250 和 P68251的次级登录号均为P29358 。</p>
+</blockquote>
+<p>所以,UniprotKB建议,我们最好使用数据的主登录号作为数据引用的方式(不是Entry name ,也不是二级登录号),因为主登录号是唯一并且稳定存在的数据标识符。</p>
+<p>了解完AC号和Entry name之后,以UniProtKB/Swiss-Prot为例,我们来看看一组数字</p>
+<blockquote>
+<p>UniProtKB/Swiss-Prot数据小统计<br>截至2018年9月,UniProtKB/Swiss-Prot中共有558,590个Entry name,可见Entry name数量随时间是迅猛增长的</p>
+</blockquote>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/is2y4iwufu.jpeg?imageView2/2/w/1620" alt=""></p>
+<p>在UniProtKB/Swiss-Prot的数据中,植物占很大一部分,人类数据也占比很多!</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/5j0dd7v0rw.png?imageView2/2/w/1620" alt=""></p>
+<p>蛋白质序列长度分布在0-500左右,最短的蛋白质序列长度只包含2个氨基酸,最长的蛋白质序列包含35,213个氨基酸</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/a8djqjtsdv.jpeg?imageView2/2/w/1620" alt=""></p>
+<p>截至2018年9月,UniProtKB/Swiss-Prot 包含 558590条注释条目,UniProtKB/TrEMBL包含126780198条注释条目。</p>
+<p>Uniprot确实很厉害!这么多数据,以后我们要是找蛋白质信息,都去Uniprot啦!</p>
+<p>数据库和ID介绍到这里,基本就快结束啦,最后,我们再学习学习GEO</p>
+<h3 id="八-GEO数据库"><a href="#八-GEO数据库" class="headerlink" title="(八) GEO数据库"></a>(八) GEO数据库</h3><p>基因表达数据库(Gene Expression Omnibus,GEO)隶属于美国国立卫生研究院的NCBI。是当今最大、最全面的公共基因表达数据资源。GEO数据库的数据由两部分构成:</p>
+<ol>
+<li>用户提交的原始数据:</li>
+</ol>
+<ul>
+<li>GEO Platform (GPL)</li>
+<li>GEO Sample (GSM)</li>
+<li>GEO Series (GSE)</li>
+</ul>
+<p>其中,GSE = GPL(Platform) + GSA(Sample)</p>
+<ol start="2">
+<li>GEO数据库整理后的数据:Data set ,Profile</li>
+</ol>
+<p>面我们简单介绍一下GPL,GSM和GSE</p>
+<blockquote>
+<p>GEO Platform(GPL):<br>   平台数据包含阵列或序列以及阵列平台的简要描述。每个平台都分配了一个特有的登录号用于检索(格式是:GPL+数字编号),例如:平台GPL341<br><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GPL341" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GPL341</a></p>
+<p>GEO Sample (GSM) :<br>   样本数据描述了每个样本的操作环境,处理方法和分离出的各个成分的丰度测量。每个样本都分配了一个特有的登录号用于检索(格式是:GSM+数字编号)例如:样本GSM12793<br><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM12793" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM12793</a></p>
+<p>GEO Series (GSE) :<br>   GSE=GPL(Platform)+GSA(Sample)<br>   系列数据将一系列相关的样本联系起来,提供了整个研究的关注点和描述,也包含了描述提取数据、简要结论和分析的表格。每个系列都分配了一个特有的登录号用于检索(格式是:GSE+数字编号)例如:系列GSE830<br><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE830" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE830</a></p>
+</blockquote>
+<p>看到这里,我们对主流生信数据库的ID规则和数据库的基本情况也就有所了解啦,之后想要进阶还需要不断学习和努力。关于ID转换的部分本文没有讲述,其实这也是一个大坑,等未来再继续填坑!</p>
+<h3 id="拓展阅读-GENCODE计划"><a href="#拓展阅读-GENCODE计划" class="headerlink" title="拓展阅读-GENCODE计划"></a>拓展阅读-GENCODE计划</h3><p>什么是GENCODE计划呢,我们首先来看一段历史</p>
+<blockquote>
+<p>2003年9月,美国国家人类基因组研究所(NHGRI)发起了一个名为ENCODE((DNA元件百科全书))的公共研究计划。项目的目标是识别人类基因组序列中的所有功能元件。GENCODE计划属于ENCODE计划的衍生品,由Sanger研究所进行维护。2003年的时候GENCODE获得了第一批资助,当时GENCODE的目标是对人类基因组中的功能元件进行注释。GENCODE小组在2013年时获得了第二次资助,以继续他们的人类基因组注释工作,并将GENCODE扩展到包括小鼠基因组注释。2017年的时候GENCODE又获得了一批资助,用以完成小鼠基因和人类基因组功能元件的注释工作。</p>
+</blockquote>
+<p>所以GENCODE计划目前的主要工作就是对人类和小鼠的基因组进行功能元件注释。</p>
+<p>上文介绍Ensembl的时候也提到过,GENCODE的注释和Ensembl注释的关系是:GENCODE注释来源于havana团队人工完成的基因注释和Ensembl计算机自动完成的基因注释的合并。所以我们查看gtf文件的时候,会发现有“HAVANA”和”ENSEMBL”这两个名称交替出现。HAVANA表示注释来自于人工。ENSEMBL表示注释来源于计算机程序的自动注释。</p>
+<p>从GENCODE提供的信息来看,人类一共有58721个基因(包括假基因),目前大概有19940个蛋白质编码基因,16066个长非编码RNA的基因,等等。?</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/eh2krhmpv6.png?imageView2/2/w/1620" alt=""></p>
+<p>GENCODE中,小鼠一共有54446,其中有21969个蛋白质编码基因(比人类多),12840个长非编码RNA的基因,等等。</p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-1154415/o9xvlroyag.png?imageView2/2/w/1620" alt=""></p>
+<p>GENCODE的注释文件的发行版本和Ensembl是一致的,目前GENCODE中的人类gtf注释已经发布到version 29了,小鼠是发布到version 19版本了</p>
+<p>更多想要了解的,可以点击:<a href="https://www.gencodegenes.org/" target="_blank" rel="noopener">https://www.gencodegenes.org/</a></p>
+<h3 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a><a href="https://cloud.tencent.com/developer/article/1358527" target="_blank" rel="noopener">原文链接</a></h3><p><a href="https://cloud.tencent.com/developer/article/1358527" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1358527</a></p>
+</div><div class="post-copyright"><blockquote><p>原文作者: Billy &amp; Barney</p><p>原文链接: <a href="https://liangbilin.github.io/2020/01/01/Billy--超精华生信ID总结--转载于生信技能树/">https://liangbilin.github.io/2020/01/01/Billy--超精华生信ID总结--转载于生信技能树/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"><a href="/tags/%E7%BB%84%E5%AD%A6%E5%88%86%E6%9E%90-%E6%95%B0%E6%8D%AE%E5%BA%93/">组学分析 - 数据库</a></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2020/01/05/Barney--JS%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/" class="pre">JS中的事件机制</a><a href="/2019/12/30/Barney--JS%E4%B8%AD%E7%9A%84%E5%80%BC%E7%B1%BB%E5%9E%8B/" class="next">JS中的值类型</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-各大生信资源的使用流行程度"><span class="toc-text">(一) 各大生信资源的使用流行程度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-生信数据库的霸主-NCBI以及Entrez检索系统"><span class="toc-text">(二) 生信数据库的霸主-NCBI以及Entrez检索系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-Gene查找好帮手-Entrez-Gene数据库"><span class="toc-text">(三) Gene查找好帮手-Entrez Gene数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-Ensembl计划"><span class="toc-text">(四) Ensembl计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-NCBI非冗余序列数据库-RefSeq"><span class="toc-text">(五) NCBI非冗余序列数据库-RefSeq</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六-NCBI核酸序列数据库-GenBank"><span class="toc-text">(六) NCBI核酸序列数据库-GenBank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七-蛋白质序列数据库-Uniprot"><span class="toc-text">(七) 蛋白质序列数据库-Uniprot</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UniprotKB-TrEMBL-entry-names"><span class="toc-text">UniprotKB&#x2F;TrEMBL entry names</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Accession-Number"><span class="toc-text">Accession Number</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八-GEO数据库"><span class="toc-text">(八) GEO数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拓展阅读-GENCODE计划"><span class="toc-text">拓展阅读-GENCODE计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原文链接"><span class="toc-text">原文链接</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/18/Billy--Python%E5%8C%85%E5%92%8C%E6%A8%A1%E5%9D%97%E2%80%94%E5%88%9B%E5%BB%BA%E5%92%8C%E5%AE%89%E8%A3%85/">python包和模块——创建和安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/11/Barney--this/">this</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/Barney--css%E4%BC%98%E5%8C%96/">CSS优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/08/Barney--%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/Barney--%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/">作用域与闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/07/Barney--window%E5%AF%B9%E8%B1%A1/">window对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/05/Barney--JS%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/">JS中的事件机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/01/Billy--%E8%B6%85%E7%B2%BE%E5%8D%8E%E7%94%9F%E4%BF%A1ID%E6%80%BB%E7%BB%93--%E8%BD%AC%E8%BD%BD%E4%BA%8E%E7%94%9F%E4%BF%A1%E6%8A%80%E8%83%BD%E6%A0%91/">超精华生信ID总结--转载于生信技能树</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/30/Barney--JS%E4%B8%AD%E7%9A%84%E5%80%BC%E7%B1%BB%E5%9E%8B/">JS中的值类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/11/Billy--NCBI%E4%B8%89%E7%A7%8D%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%BA%93/">NCBI三种常见数据库--NR/NT、Taxonomy、RefSeq</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Barney/">Barney</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Billy/">Billy</a><span class="category-list-count">23</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/%E8%82%BF%E7%98%A4/" style="font-size: 15px;">肿瘤</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 15px;">神经网络</a> <a href="/tags/%E4%BA%8C%E4%BB%A3%E6%B5%8B%E5%BA%8F/" style="font-size: 15px;">二代测序</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BE%85%E5%8A%A9%E8%8D%AF%E7%89%A9%E8%AE%BE%E8%AE%A1/" style="font-size: 15px;">计算机辅助药物设计</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/" style="font-size: 15px;">软件教程</a> <a href="/tags/%E7%BA%B3%E7%B1%B3%E5%AD%94%E6%B5%8B%E5%BA%8F/" style="font-size: 15px;">纳米孔测序</a> <a href="/tags/%E8%A1%A8%E8%A7%82%E7%BB%84/" style="font-size: 15px;">表观组</a> <a href="/tags/%E8%BD%AC%E5%BD%95%E7%BB%84/" style="font-size: 15px;">转录组</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 15px;">软件工程</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/%E7%BB%84%E5%AD%A6%E5%88%86%E6%9E%90-%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">组学分析 - 数据库</a> <a href="/tags/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">标记语言</a> <a href="/tags/Demo/" style="font-size: 15px;">Demo</a> <a href="/tags/%E6%96%B0%E7%94%9F%E6%8A%97%E5%8E%9F/" style="font-size: 15px;">新生抗原</a> <a href="/tags/R/" style="font-size: 15px;">R</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a><span class="archive-list-count">22</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://asia.ensembl.org/index.html" title="ensembl" target="_blank">ensembl</a><ul></ul><a href="https://sci-hub.tw/" title="sci-hub" target="_blank">sci-hub</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Billy &amp; Barney.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
